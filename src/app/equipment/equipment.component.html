@@ -1,1 +1,40 @@
-<p>equipment works!</p>
+<div class="container mt-4">
+  <div class="row">
+    <!-- Left column for the list of equipment -->
+    <div class="col-md-6">
+      <button class="btn btn-primary mb-3" (click)="toggleVisibility()">Toggle Equipment List</button>
+
+      <div *ngIf="showEquipmentList">
+        <div *ngFor="let equipment of equipments" class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">{{ equipment.name }}</h5>
+            <p class="card-text">Category: {{ equipment.category.name }}</p>
+            <p class="card-text">Price per day: {{ equipment.price_per_day | currency: 'USD' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right column for adding equipment form -->
+    <div class="col-md-6">
+      <!-- Your add equipment form goes here -->
+      <form (submit)="addEquipment()">
+        <div class="form-group">
+          <label for="equipmentName">Equipment Name</label>
+          <input type="text" class="form-control" name="1" id="equipmentName" [(ngModel)]="newEquipment.name" required>
+        </div>
+        <div class="form-group">
+          <label for="categoryName">Category Name</label>
+          <select class="form-control" id="categoryName" name="categoryName" [(ngModel)]="newEquipment.category_Id" required>
+            <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="pricePerDay">Price Per Day</label>
+          <input type="number" class="form-control" id="pricePerDay" name="3" [(ngModel)]="newEquipment.price_per_day" required>
+        </div>
+        <button type="submit" class="btn btn-success">Add Equipment</button>
+      </form>
+    </div>
+  </div>
+</div>
