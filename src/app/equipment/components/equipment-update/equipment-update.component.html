@@ -1,0 +1,28 @@
+<!-- update-equipment.component.html -->
+
+<div class="container mt-4">
+    <h2>Update Equipment</h2>
+
+    <form>
+        <div class="form-group">
+            <label for="equipmentName">Equipment Name</label>
+            <input type="text" class="form-control" id="equipmentName" [(ngModel)]="equipment.name" name="equipmentName" required>
+        </div>
+
+        <div class="form-group">
+            <label for="categoryName">Category Name</label>
+            <select class="form-control" id="categoryName" name="categoryName" [(ngModel)]="equipment.category_Id" required>
+                <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="pricePerDay">Price per Day</label>
+            <input type="number" class="form-control" id="pricePerDay" [(ngModel)]="equipment.price_per_day" name="pricePerDay" required>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary" (click)="updateEquipment()">Update Equipment</button>
+    </form>
+</div>
+

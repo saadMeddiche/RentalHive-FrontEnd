@@ -26,11 +26,15 @@ export class EquipmentService {
     return this.http.get<Equipment[]>(this.apiUrrl);
   }
 
+  getEquipment(id: number): Observable<Equipment> {
+    return this.http.get<Equipment>(this.apiUrrl + '/' + id);
+  }
+
   addEquipment(equipment: EquipmentRequestAdd): Observable<Equipment> {
     return this.http.post<Equipment>(this.apiUrrl, equipment, httpOptions);
   }
 
-  updateEquipment(equipment: EquipmentRequestUpdate):Observable<Equipment>{
-    return this.http.put<Equipment>(this.apiUrrl, equipment, httpOptions);
+  updateEquipment(equipment: EquipmentRequestUpdate , equipmentId: number):Observable<Equipment>{
+    return this.http.put<Equipment>(this.apiUrrl+'/'+ equipmentId , equipment, httpOptions);
   }
 }
