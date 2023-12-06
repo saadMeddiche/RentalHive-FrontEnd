@@ -11,7 +11,8 @@
                         <p class="card-text">Category: {{ equipment.category.name }}</p>
                         <p class="card-text">Price per day: {{ equipment.price_per_day | currency: 'USD' }}</p>
                         <p class="card-text">Id: #{{ equipment.id }}</p>
-                        <button class="btn btn-info" [routerLink]="['update' , equipment.id]">Edit</button>
+                        <button class="btn btn-info" [routerLink]="['update' , equipment.id]">Edite</button>
+                        <app-equipment-delete [equipmentId]="equipment.id" (click)="reload(equipment)"></app-equipment-delete>
                     </div>
                 </div>
             </div>

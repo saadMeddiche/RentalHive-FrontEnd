@@ -50,7 +50,7 @@ export class EquipmentAddComponent {
 
                     this.newEquipment = {
                         name: '',
-                        category_Id: undefined,
+                        category_Id: 1,
                         price_per_day: 100,
                         added_by_id: 1
                     };

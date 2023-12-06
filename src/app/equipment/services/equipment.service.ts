@@ -37,4 +37,8 @@ export class EquipmentService {
   updateEquipment(equipment: EquipmentRequestUpdate , equipmentId: number):Observable<Equipment>{
     return this.http.put<Equipment>(this.apiUrrl+'/'+ equipmentId , equipment, httpOptions);
   }
+
+  deleteEquipment(equipmentId: number | undefined): Observable<Equipment> {
+    return this.http.delete<Equipment>(this.apiUrrl + '/' + equipmentId);
+  }
 }
