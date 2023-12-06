@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Equipment} from "./models/equipment";
-import {EquipmentRequestAdd} from "./models/equipmentRequestAdd";
+import {Equipment} from "../models/equipment";
+import {EquipmentRequestAdd} from "../models/equipmentRequestAdd";
+import {EquipmentRequestUpdate} from "../models/equipmentRequestUpdate";
 
 
 const httpOptions = {
@@ -19,9 +20,7 @@ export class EquipmentService {
 
   private apiUrrl = 'http://localhost:8080/api/equipments';
 
-
   constructor(private http :HttpClient) { }
-
 
   getEquipments(): Observable<Equipment[]> {
     return this.http.get<Equipment[]>(this.apiUrrl);
@@ -29,5 +28,9 @@ export class EquipmentService {
 
   addEquipment(equipment: EquipmentRequestAdd): Observable<Equipment> {
     return this.http.post<Equipment>(this.apiUrrl, equipment, httpOptions);
+  }
+
+  updateEquipment(equipment: EquipmentRequestUpdate):Observable<Equipment>{
+    return this.http.put<Equipment>(this.apiUrrl, equipment, httpOptions);
   }
 }

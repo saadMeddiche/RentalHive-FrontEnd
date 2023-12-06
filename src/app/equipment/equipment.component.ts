@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import {EquipmentService} from "./equipment.service";
+import {EquipmentService} from "./services/equipment.service";
 import { CommonModule } from '@angular/common';
 import {FormsModule} from "@angular/forms";
 import {Equipment} from "./models/equipment";
 import {EquipmentRequestAdd} from "./models/equipmentRequestAdd";
-import {CategoryService} from "../category/category.service";
+import {CategoryService} from "../category/services/category.service";
 import {Category} from "../category/models/Category";
 import {ErrorsService} from "../errors/services/errors.service";
 
@@ -12,7 +12,7 @@ import {ErrorsService} from "../errors/services/errors.service";
   selector: 'app-equipment',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './equipment.component.html',
+  templateUrl: './equipment-list.component.html',
   styleUrl: './equipment.component.css'
 })
 export class EquipmentComponent {
@@ -67,13 +67,7 @@ export class EquipmentComponent {
         }
 
       );
-
-
-
   }
-
-
-
 
   toggleVisibility() {
     this.showEquipmentList = !this.showEquipmentList;

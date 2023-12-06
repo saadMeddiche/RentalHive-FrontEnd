@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Equipment} from "../equipment/models/equipment";
-import {Category} from "./models/Category";
+import {Equipment} from "../../equipment/models/equipment";
+import {Category} from "../models/Category";
 
 const httpOptions = {
   headers: new HttpHeaders({
