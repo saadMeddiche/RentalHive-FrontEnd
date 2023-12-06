@@ -8,6 +8,7 @@ import {ErrorsService} from "../../../errors/services/errors.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {EquipmentService} from "../../services/equipment.service";
 import {Equipment} from "../../models/equipment";
+import {SuccessMessageService} from "../../../success-messages/services/success-message.service";
 
 @Component({
   selector: 'app-equipment-update',
@@ -31,7 +32,7 @@ export class EquipmentUpdateComponent {
       price_per_day: 100
   }
 
-  constructor(private equipmentService: EquipmentService, private categoryService: CategoryService, private errorsService: ErrorsService, private router: Router ,private activatedRoute: ActivatedRoute) {
+  constructor(private equipmentService: EquipmentService, private categoryService: CategoryService, private errorsService: ErrorsService, private router: Router ,private activatedRoute: ActivatedRoute , private successMessagesService: SuccessMessageService) {
   }
 
 
@@ -70,7 +71,10 @@ export class EquipmentUpdateComponent {
 
   updateEquipment(): void {
       this.equipmentService.updateEquipment(this.equipment , this.equipmentId).subscribe(
-          (equipment) => this.router.navigate(['/equipments'])
+          (equipment) => {
+              this.successMessagesService.updateSuccessMessage(['Equipment updated successfully']);
+              this.router.navigate(['/equipments']);
+          }
           ,
           (httpErrorResponse) => this.errorsService.updateError(httpErrorResponse.error)
       )

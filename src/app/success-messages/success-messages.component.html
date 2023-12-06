@@ -1,0 +1,6 @@
+
+<!-- Error container - will be displayed in the center of the screen -->
+<div *ngIf="successMessages && successMessages.length > 0" class="message-container">
+    <span class="close-button" (click)="closeError()">×</span>
+    <p *ngFor="let successMessage of successMessages">{{successMessage}}</p>
+</div>
