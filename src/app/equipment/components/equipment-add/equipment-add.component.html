@@ -1,0 +1,27 @@
+<div class="container mt-4">
+
+    <div class="row">
+        <!-- Right column for adding equipment form -->
+        <div class="col-md-12">
+            <!-- Your add equipment form goes here -->
+            <form (submit)="addEquipment()">
+                <div class="form-group">
+                    <label for="equipmentName">Equipment Name</label>
+                    <input type="text" class="form-control" name="1" id="equipmentName" [(ngModel)]="newEquipment.name" required>
+                </div>
+                <div class="form-group">
+                    <label for="categoryName">Category Name</label>
+                    <select class="form-control" id="categoryName" name="categoryName" [(ngModel)]="newEquipment.category_Id" required>
+                        <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pricePerDay">Price Per Day</label>
+                    <input type="number" class="form-control" id="pricePerDay" name="3" [(ngModel)]="newEquipment.price_per_day" required>
+                </div>
+                <button type="submit" class="btn btn-success">Add Equipment</button>
+            </form>
+        </div>
+    </div>
+</div>
+
