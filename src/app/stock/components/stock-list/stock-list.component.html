@@ -15,7 +15,7 @@
                                 <p class="card-text">Equipment: {{ stock.equipment.name }}</p>
                                 <p class="card-text">Status: {{ stock.status.name }}</p>
                                 <p class="card-text">Id: #{{ stock.id }}</p>
-                                <button class="btn btn-info" [routerLink]="['update' , stock.id]">Edite</button>
+                                <button class="btn btn-info" [routerLink]="['update' , stock.id]">Edit</button>
                                 <app-stock-delete [stockId]="stock.id" (click)="reload(stock)"></app-stock-delete>
                             </div>
                         </div>

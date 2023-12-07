@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Stock} from "../models/stock";
 import {StockRequestAdd} from "../models/stockRequestAdd";
+import {StockRequestUpdate} from "../models/stockRequestUpdate";
 
 
 const httpOptions = {
@@ -32,10 +33,10 @@ export class StockService {
   addStock(equipment: StockRequestAdd): Observable<Stock> {
     return this.http.post<Stock>(this.apiUrrl, equipment, httpOptions);
   }
-  //
-  // updateStock(equipment: StockRequestUpdate , equipmentId: number):Observable<Stock>{
-  //   return this.http.put<Stock>(this.apiUrrl+'/'+ equipmentId , equipment, httpOptions);
-  // }
+
+  updateStock(equipment: StockRequestUpdate , equipmentId: number):Observable<Stock>{
+    return this.http.put<Stock>(this.apiUrrl+'/'+ equipmentId , equipment, httpOptions);
+  }
 
   deleteStock(equipmentId: number | undefined): Observable<Stock> {
     return this.http.delete<Stock>(this.apiUrrl + '/' + equipmentId);
