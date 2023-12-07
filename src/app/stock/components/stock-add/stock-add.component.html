@@ -1,0 +1,22 @@
+
+<app-stock></app-stock>
+<div class="container mt-4">
+
+  <h4>Name Of Equipment {{equipment?.name}}</h4>
+    <div class="row">
+        <!-- Right column for adding equipment form -->
+        <div class="col-md-12">
+            <!-- Your add equipment form goes here -->
+            <form (submit)="addStock()">
+                <div class="form-group">
+                    <label for="stockRegistrationNumber">Registration Number</label>
+                    <input type="text" class="form-control" name="1" id="stockRegistrationNumber" [(ngModel)]="newStock.registrationNumber" required>
+                </div>
+
+
+                <button type="submit" class="btn btn-success">Add Stock</button>
+            </form>
+        </div>
+    </div>
+</div>
+

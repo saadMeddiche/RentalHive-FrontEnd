@@ -26,7 +26,7 @@ export class EquipmentService {
     return this.http.get<Equipment[]>(this.apiUrrl);
   }
 
-  getEquipment(id: number): Observable<Equipment> {
+  getEquipment(id: number | undefined): Observable<Equipment> {
     return this.http.get<Equipment>(this.apiUrrl + '/' + id);
   }
 

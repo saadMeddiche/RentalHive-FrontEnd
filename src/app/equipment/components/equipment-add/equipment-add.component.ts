@@ -7,6 +7,8 @@ import {EquipmentService} from "../../services/equipment.service";
 import {CategoryService} from "../../../category/services/category.service";
 import {ErrorsService} from "../../../errors/services/errors.service";
 import {Router} from "@angular/router";
+import {SuccessMessageService} from "../../../success-messages/services/success-message.service";
+import {EquipmentComponent} from "../../equipment.component";
 
 @Component({
   selector: 'app-equipment-add',
@@ -14,7 +16,8 @@ import {Router} from "@angular/router";
     imports: [
         FormsModule,
         NgForOf,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        EquipmentComponent
     ],
   templateUrl: './equipment-add.component.html',
   styleUrl: './equipment-add.component.css'
@@ -30,7 +33,7 @@ export class EquipmentAddComponent {
         added_by_id: 1 // i should not do this, instead i should use the tocken in the backend
     }
 
-    constructor(private equipmentService: EquipmentService , private categoryService: CategoryService , private errorsService: ErrorsService ,private router: Router) { }
+    constructor(private equipmentService: EquipmentService , private categoryService: CategoryService , private errorsService: ErrorsService ,private router: Router , private successMessagesService: SuccessMessageService) { }
 
     ngOnInit() {
         this.getCategories();
@@ -54,6 +57,8 @@ export class EquipmentAddComponent {
                         price_per_day: 100,
                         added_by_id: 1
                     };
+
+                    this.successMessagesService.updateSuccessMessage(['Equipment added successfully.']);
                 },
                 (HttpErrorResponse) => {
                     this.errorsService.updateError(HttpErrorResponse.error);

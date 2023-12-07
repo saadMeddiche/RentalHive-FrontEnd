@@ -6,11 +6,12 @@ import {ErrorsService} from "../../../errors/services/errors.service";
 import {CommonModule} from "@angular/common";
 import {Router, RouterLink} from "@angular/router";
 import {EquipmentDeleteComponent} from "../equipment-delete/equipment-delete.component";
+import {EquipmentComponent} from "../../equipment.component";
 
 @Component({
   selector: 'app-equipment-list',
   standalone: true,
-  imports: [CommonModule, RouterLink, EquipmentDeleteComponent],
+  imports: [CommonModule, RouterLink, EquipmentDeleteComponent, EquipmentComponent],
   templateUrl: './equipment-list.component.html',
   styleUrl: './equipment-list.component.css'
 })
@@ -28,6 +29,10 @@ export class EquipmentListComponent {
   getEquipments(): void {
     this.equipmentService.getEquipments()
         .subscribe(equipments => (this.equipments = equipments.reverse()));
+  }
+
+  addStockOfEquipment(equipmentId :number):void{
+
   }
 
   reload(equipment: Equipment): void {

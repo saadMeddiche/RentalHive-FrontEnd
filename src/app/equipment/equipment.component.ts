@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { FormsModule} from "@angular/forms";
-import {Router} from "@angular/router";
+import {Router, RouterOutlet} from "@angular/router";
 
 
 @Component({
   selector: 'app-equipment',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterOutlet],
   templateUrl: './equipment.component.html',
   styleUrl: './equipment.component.css'
 })

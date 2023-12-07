@@ -1,0 +1,28 @@
+<app-stock></app-stock>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+
+            <button class="btn btn-primary mb-3" (click)="toggleVisibility()">Toggle Stock List</button>
+
+            <div *ngIf="showStockList">
+                <div class="row">
+                    <div *ngFor="let stock of stocks" class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Registration Number:{{ stock.registrationNumber }}</h5>
+                                <p class="card-text">Equipment: {{ stock.equipment.name }}</p>
+                                <p class="card-text">Status: {{ stock.status.name }}</p>
+                                <p class="card-text">Id: #{{ stock.id }}</p>
+                                <button class="btn btn-info" [routerLink]="['update' , stock.id]">Edite</button>
+                                <app-stock-delete [stockId]="stock.id" (click)="reload(stock)"></app-stock-delete>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

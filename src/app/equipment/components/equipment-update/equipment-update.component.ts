@@ -9,14 +9,16 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {EquipmentService} from "../../services/equipment.service";
 import {Equipment} from "../../models/equipment";
 import {SuccessMessageService} from "../../../success-messages/services/success-message.service";
+import {EquipmentComponent} from "../../equipment.component";
 
 @Component({
   selector: 'app-equipment-update',
   standalone: true,
-  imports: [
-    FormsModule,
-    NgForOf
-  ],
+    imports: [
+        FormsModule,
+        NgForOf,
+        EquipmentComponent
+    ],
   templateUrl: './equipment-update.component.html',
   styleUrl: './equipment-update.component.css'
 })

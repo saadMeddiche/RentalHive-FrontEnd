@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import {RouterLink, RouterOutlet} from '@angular/router';
 import {EquipmentComponent} from "./equipment/equipment.component";
 import {ErrorsComponent} from "./errors/errors.component";
 import {SuccessMessagesComponent} from "./success-messages/success-messages.component";
@@ -8,7 +8,7 @@ import {SuccessMessagesComponent} from "./success-messages/success-messages.comp
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, EquipmentComponent, ErrorsComponent, SuccessMessagesComponent],
+  imports: [CommonModule, RouterOutlet, EquipmentComponent, ErrorsComponent, SuccessMessagesComponent, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
