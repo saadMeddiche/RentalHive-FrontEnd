@@ -17,13 +17,20 @@ export class StockDeleteComponent {
   }
   deleteStock(stockId: number | undefined): void {
 
+
     if(stockId == undefined){
       this.errorsService.updateError(['The Id Of Stock can not be undefined']);
       return;
     }
 
+    console.log("Stock (((")
+
     this.stockService.deleteStock(stockId).subscribe(
-        () => this.successMessagesService.updateSuccessMessage(['Stock deleted successfully.'])
+
+        (stock) => {
+          console.log("Stock deleted")
+          this.successMessagesService.updateSuccessMessage(['Stock deleted successfully.'])
+        }
         ,
         (httpErrorResponse: any) => this.errorsService.updateError(httpErrorResponse.error)
 

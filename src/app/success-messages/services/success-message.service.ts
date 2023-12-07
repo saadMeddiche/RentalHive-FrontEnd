@@ -10,6 +10,7 @@ export class SuccessMessageService {
   public successMessages$ = this.successMessagesSubject.asObservable();
 
   updateSuccessMessage(successMessages: string[]) {
+    console.log("I am inside updateSuccessMessage")
     this.successMessagesSubject.next(successMessages);
   }
 }
