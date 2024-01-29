@@ -1,0 +1,72 @@
+<app-demand></app-demand>
+
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <form >
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea class="form-control" id="description" [(ngModel)]="demand.description" name="description" rows="4"></textarea>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center">
+
+          <div class="form-group mb-0">
+            <label for="date_reservation" class="mb-1">Date Reservation:</label>
+            <input type="datetime-local" class="form-control m-2" id="date_reservation" [(ngModel)]="demand.date_reservation" name="date_reservation">
+          </div>
+
+          <button class="btn btn-warning m-2" (click)="checkAvailability()">
+            Check Availability
+          </button>
+
+          <div class="form-group mb-0">
+            <label for="date_expiration" class="mb-1">Date Expiration:</label>
+            <input type="datetime-local" class="form-control m-2" id="date_expiration" [(ngModel)]="demand.date_expiration" name="date_expiration">
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="searchEquipment">Search:</label>
+        <input type="text" class="form-control" id="searchEquipment" [(ngModel)]="lookingFor">
+      </div>
+    </div>
+
+    <div>
+
+      <h2>Available Equipments</h2>
+
+      <div *ngIf="equipmentWithAvailableCount.length === 0; else equipmentList">
+        <p>No equipment is available.</p>
+      </div>
+
+      <ng-template #equipmentList>
+        <div class="row">
+          <div *ngFor="let equipmentWithCount of equipmentWithAvailableCount" class="col-md-4 mb-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">{{ equipmentWithCount.equipment.name }}</h5>
+                <p class="card-text">Category: {{ equipmentWithCount.equipment.category.name }}</p>
+                <p class="card-text">Price per day: {{ equipmentWithCount.equipment.price_per_day | currency: 'USD' }}</p>
+                <p class="card-text">Available Count: {{ equipmentWithCount?.availableCount }}</p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+
+    </div>
+
+    <div class="col-md-12">
+      <button (click)="addDemand()" class="btn btn-success">
+        Reserve
+      </button>
+    </div>
+  </div>
+</div>

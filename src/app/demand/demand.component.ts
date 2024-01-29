@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-demand',
@@ -9,4 +10,14 @@ import { Component } from '@angular/core';
 })
 export class DemandComponent {
 
+  constructor(private router: Router) {
+  }
+
+  viewList(): void {
+    this.router.navigate(['/demands']);
+  }
+
+  addDemand(): void {
+    this.router.navigate(['/demands/add']);
+  }
 }
